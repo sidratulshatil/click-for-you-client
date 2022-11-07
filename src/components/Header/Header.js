@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
     return (
         <div>
             <div className="navbar bg-green-100">
@@ -12,8 +20,19 @@ const Header = () => {
                     <ul className="menu menu-horizontal p-0">
                         <Link to='/'> <li><a>Home</a></li></Link>
                         <Link to='/services'> <li><a>Services</a></li></Link>
-                        <Link><li><a>Login</a></li></Link>
-                        <Link><li><a>Sign Up</a></li></Link>
+                        {
+                            user?.uid ?
+                                <>
+                                    <Link><li><button onClick={handleLogout} className="btn-ghost">Logout</button></li></Link>
+                                </>
+                                :
+                                <>
+                                    <Link to='/login'><li><a>Login</a></li></Link>
+                                    <Link to='/register'><li><a>Register</a></li></Link>
+                                </>
+                        }
+
+
                     </ul>
                 </div>
             </div>
