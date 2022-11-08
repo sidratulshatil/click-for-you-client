@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Form } from 'react-router-dom';
+import { Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
@@ -75,6 +75,7 @@ const Register = () => {
                                         <input type="password" placeholder="password" name='password' className="input input-bordered" />
 
                                     </div>
+                                    <span><p>Already have an account?<Link className='redirect-btn' to='/login'>Login Now</Link></p></span>
                                     <p className='mr-auto text-red-600'>{error}</p>
                                     <div className="form-control mt-6">
                                         <button className="btn btn-primary">Register</button>

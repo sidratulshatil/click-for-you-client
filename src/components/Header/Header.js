@@ -14,21 +14,22 @@ const Header = () => {
         <div>
             <div className="navbar bg-green-100">
                 <div className="flex-1">
-                    <a className="btn btn-ghost normal-case text-xl">Click For You</a>
+                    <button className="btn btn-ghost normal-case text-xl">Click For You</button>
                 </div>
                 <div className="flex-none">
                     <ul className="menu menu-horizontal p-0">
-                        <Link to='/'> <li><a>Home</a></li></Link>
-                        <Link to='/services'> <li><a>Services</a></li></Link>
+                        <Link to='/'> <li><button>Home</button></li></Link>
+                        <Link to='/services'> <li><button>Services</button></li></Link>
                         {
                             user?.uid ?
                                 <>
+                                    <Link to='/myreviews'><li><button className="btn-ghost">My Reviews</button></li></Link>
                                     <Link><li><button onClick={handleLogout} className="btn-ghost">Logout</button></li></Link>
                                 </>
                                 :
                                 <>
-                                    <Link to='/login'><li><a>Login</a></li></Link>
-                                    <Link to='/register'><li><a>Register</a></li></Link>
+                                    <Link to='/login'><li><button className="btn-ghost">Login</button></li></Link>
+                                    <Link to='/register'><li><button className="btn-ghost">Register</button></li></Link>
                                 </>
                         }
 

@@ -3,6 +3,8 @@ import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
+import './Login.css'
+
 const Login = () => {
     const { providerLogin, signIn } = useContext(AuthContext)
     const [error, setError] = useState('')
@@ -77,6 +79,7 @@ const Login = () => {
 
 
                                 </div>
+                                <span><p>Didn't have an account?<Link className='redirect-btn' to='/register'>Register Now</Link></p></span>
                                 <p className='mr-auto text-red-600'>{error}</p>
 
                                 <Link><button onClick={handleGoogleLogin} class="btn btn-ghost"><FaGoogle></FaGoogle>  <span className='ml-4'>Log in with Google</span> </button></Link>
