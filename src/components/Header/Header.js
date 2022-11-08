@@ -24,6 +24,7 @@ const Header = () => {
                             user?.uid ?
                                 <>
                                     <Link to='/myreviews'><li><button className="btn-ghost">My Reviews</button></li></Link>
+                                    <Link to='/addservice'><li><button className="btn-ghost">Add Service</button></li></Link>
                                     <Link><li><button onClick={handleLogout} className="btn-ghost">Logout</button></li></Link>
                                 </>
                                 :
@@ -32,7 +33,7 @@ const Header = () => {
                                     <Link to='/register'><li><button className="btn-ghost">Register</button></li></Link>
                                 </>
                         }
-
+                        <Link to='/blog'> <li><button>Blog</button></li></Link>
 
                     </ul>
                 </div>

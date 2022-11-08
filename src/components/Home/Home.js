@@ -4,13 +4,14 @@ import banner from '../images/banner.jpg'
 import './Home.css'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import Footer from '../Footer/Footer';
 
 const Home = () => {
     const services = useLoaderData()
     const { title, price, _id } = services
 
     return (
-        <div className='my-8'>
+        <div className='mt-8'>
             <div>
                 <img className='banner' src={banner} alt="" />
                 <div className='banner-text'>
@@ -41,6 +42,9 @@ const Home = () => {
             </div>
             <div>
                 <Link to='/services'><button className="btn btn-active btn-accent text-white font-bold">See All</button></Link>
+            </div>
+            <div className='mt-12 bottom-0'>
+                <Footer></Footer>
             </div>
         </div>
     );
