@@ -1,5 +1,5 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import banner from '../images/banner.jpg'
 import './Home.css'
 
@@ -7,7 +7,7 @@ const Home = () => {
     const services = useLoaderData()
     const { title, price } = services
     return (
-        <div>
+        <div className='my-8'>
             <div>
                 <img className='banner' src={banner} alt="" />
                 <div className='banner-text'>
@@ -25,11 +25,14 @@ const Home = () => {
                             <p>{service.details.slice(0, 100) + '...'}</p>
                             <div className="card-actions justify-end">
                                 <p className='text-2xl font-bold'>Price:<span className='text-2xl text-red-600 font-bold'> {service.price}$</span></p>
-                                <button className="btn btn-primary">Details</button>
+                                <button className="btn btn-primary">View Details</button>
                             </div>
                         </div>
                     </div>)
                 }
+            </div>
+            <div>
+                <Link to='/services'><button className="btn btn-active btn-accent text-white font-bold">See All</button></Link>
             </div>
         </div>
     );
