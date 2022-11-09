@@ -20,7 +20,7 @@ const ServiceDetails = () => {
             .then(data => setReviews(data))
     }, [])
 
-    const handlePlaceReview = event => {
+    const handlePlaceReview = (event) => {
         event.preventDefault();
         const form = event.target;
         const email = user?.email || 'unregistered';
@@ -33,22 +33,24 @@ const ServiceDetails = () => {
             photoUrl: user.photoURL,
             email: email,
         }
-
-        fetch('http://localhost:5000/review', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(review)
-        })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data)
-                alert('Review added successfully')
-                form.reset();
-
+        const procced = window.confirm('Are you sure??')
+        if (procced) {
+            fetch('http://localhost:5000/review', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(review)
             })
-            .catch(er => console.error(er));
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    alert('Review added successfully')
+                    form.reset();
+
+                })
+                .catch(er => console.error(er));
+        }
     }
     const handleDelete = (id) => {
         const procced = window.confirm('Are you sure??')
@@ -90,7 +92,8 @@ const ServiceDetails = () => {
                         <>
                             <Form onSubmit={handlePlaceReview}>
                                 <textarea name='comment' className="textarea textarea-bordered mt-4" placeholder="your review"></textarea><br />
-                                <button className="btn btn-sm">Add review</button>
+                                <button type='submit' className="btn btn-sm">Add review</button>
+
                             </Form>
                         </>
                         :
