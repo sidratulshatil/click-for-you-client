@@ -1,11 +1,13 @@
 import React from 'react';
 import { useLoaderData } from 'react-router-dom';
+import useTitle from '../Hooks/useTitle';
 
 const Blog = () => {
-    const reviews = useLoaderData()
+
+    useTitle('Blog')
     return (
         <div>
-            <h2>{reviews.length}</h2>
+            <h2>blog</h2>
         </div>
     );
 };

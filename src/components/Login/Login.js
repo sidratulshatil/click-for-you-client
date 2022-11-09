@@ -4,11 +4,12 @@ import { FaGoogle } from 'react-icons/fa'
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './Login.css'
+import useTitle from '../Hooks/useTitle';
 
 const Login = () => {
     const { providerLogin, signIn } = useContext(AuthContext)
     const [error, setError] = useState('')
-
+    useTitle('Login')
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from?.pathname || '/';

@@ -5,11 +5,12 @@ import './Home.css'
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
 import Footer from '../Footer/Footer';
+import useTitle from '../Hooks/useTitle';
 
 const Home = () => {
     const services = useLoaderData()
     const { title, price, _id } = services
-
+    useTitle('Click For You')
     return (
         <div className='mt-8'>
             <div>

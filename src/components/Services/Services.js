@@ -2,9 +2,11 @@ import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import { PhotoProvider, PhotoView } from 'react-photo-view';
 import 'react-photo-view/dist/react-photo-view.css';
+import useTitle from '../Hooks/useTitle';
 
 const Services = () => {
     const services = useLoaderData()
+    useTitle('Services')
     return (
         <div className='grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-2 my-8 mx-12'>
             {

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Form } from 'react-router-dom';
+import useTitle from '../Hooks/useTitle';
 
 const AddService = () => {
-
+    useTitle('Add Service')
     const handlePlaceOrder = event => {
         event.preventDefault();
         const form = event.target;

@@ -1,12 +1,15 @@
+import { data } from 'autoprefixer';
 import React, { useContext, useEffect, useState } from 'react';
 import { Form, Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import useTitle from '../Hooks/useTitle';
 import Review from '../Review/Review';
 
 const ServiceDetails = () => {
     const service = useLoaderData()
+    useTitle('Service Details')
     const [reviews, setReviews] = useState([])
-    // console.log(orders)
+
     const { user } = useContext(AuthContext)
     useEffect(() => {
         fetch(`http://localhost:5000/review`
@@ -18,7 +21,7 @@ const ServiceDetails = () => {
                 return res.json()
             })
             .then(data => setReviews(data))
-    }, [])
+    }, [data])
 
     const handlePlaceReview = (event) => {
         event.preventDefault();
@@ -29,6 +32,7 @@ const ServiceDetails = () => {
         const review = {
 
             name: user.displayName,
+            reviewId: service._id,
             comment: comment,
             photoUrl: user.photoURL,
             email: email,
