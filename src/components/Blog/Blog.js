@@ -21,18 +21,18 @@ const Blog = () => {
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                 <div className="collapse-title text-xl font-medium">
-                    Focus me to see content
+                    What is the difference between javascript and NodeJS?
                 </div>
                 <div className="collapse-content">
-                    <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                    <p>JavaScript is a simple programming language that can be used with any browser that has the JavaScript Engine installed. Node. js, on the other hand, is an interpreter or execution environment for the JavaScript programming language.</p>
                 </div>
             </div>
             <div tabIndex={0} className="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box">
                 <div className="collapse-title text-xl font-medium">
-                    Focus me to see content
+                    How does NodeJS handle multiple requests at the same time?
                 </div>
                 <div className="collapse-content">
-                    <p>tabIndex={0} attribute is necessary to make the div focusable</p>
+                    <p>How NodeJS handle multiple client requests? NodeJS receives multiple client requests and places them into EventQueue. NodeJS is built with the concept of event-driven architecture. NodeJS has its own EventLoop which is an infinite loop that receives requests and processes them</p>
                 </div>
             </div>
         </div>
