@@ -19,7 +19,7 @@ export const routes = createBrowserRouter([
             { path: '/services', element: <Services></Services>, loader: () => fetch(`http://localhost:5000/services`) },
             { path: '/login', element: <Login></Login> },
             { path: '/register', element: <Register></Register> },
-            { path: '/myreviews', element: <MyReviews></MyReviews> },
+            { path: '/myreviews', element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute> },
             { path: '/addservice', element: <PrivateRoute><AddService></AddService></PrivateRoute> },
             { path: '/blog', element: <Blog></Blog> },
             { path: '/review', element: <Review></Review>, loader: () => fetch('http://localhost:5000/review') },

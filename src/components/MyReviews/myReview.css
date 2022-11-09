@@ -1,0 +1,8 @@
+.my-review-div {
+    border: 1px solid gray;
+    margin-right: 20%;
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 10px;
+    margin-left: 20%;
+}

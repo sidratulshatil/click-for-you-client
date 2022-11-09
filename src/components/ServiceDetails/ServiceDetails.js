@@ -7,12 +7,13 @@ import Review from '../Review/Review';
 
 const ServiceDetails = () => {
     const service = useLoaderData()
+    // console.log(service)
     useTitle('Service Details')
     const [reviews, setReviews] = useState([])
-
+    // console.log(reviews)
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/review`
+        fetch(`http://localhost:5000/review?reviewId=${service?._id}`
         )
             .then(res => {
                 // if (res.status === 401 || res.status === 403) {
@@ -36,6 +37,8 @@ const ServiceDetails = () => {
             comment: comment,
             photoUrl: user.photoURL,
             email: email,
+            title: service.title,
+            dateAdded: new Date()
         }
         const procced = window.confirm('Are you sure??')
         if (procced) {

@@ -5,20 +5,21 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import './review.css'
 const Review = ({ reviews, handleDelete }) => {
     const { user } = useContext(AuthContext)
-    // const reviews = useLoaderData()
-    const { _id } = reviews
 
-    console.log(reviews)
+    // const reviews = useLoaderData()
+
+
     return (
         <div className="">
+            <h1></h1>
             {
                 reviews.map(review => <table className="table  review-div">
                     <thead>
                         <tr>
                             <th>
-                                <label>
+                                {/* <label>
                                     <th>Delete Review</th>
-                                </label>
+                                </label> */}
                             </th>
                             <th>Name</th>
                             <th>Review</th>
@@ -27,9 +28,9 @@ const Review = ({ reviews, handleDelete }) => {
                     <tbody>
                         <tr>
                             <th>
-                                <label>
+                                {/* <label>
                                     <button onClick={() => handleDelete(review._id)}>X</button>
-                                </label>
+                                </label> */}
                             </th>
                             <td>
                                 <div className="flex items-center space-x-3">

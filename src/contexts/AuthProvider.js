@@ -12,6 +12,7 @@ const auth = getAuth(app)
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [loading, setLoading] = useState(true)
+    const [reviews, setReviews] = useState([])
     const provider = new GoogleAuthProvider()
 
     const createUser = (email, password) => {
@@ -49,7 +50,26 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
-    const authInfo = { user, createUser, signIn, providerLogin, logOut, updatUserProfile, loading }
+    const handleDelete = (id) => {
+        const procced = window.confirm('Are you sure??')
+        if (procced) {
+            fetch(`http://localhost:5000/review/${id}`, {
+                method: 'DELETE'
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                    if (data.deletedCount > 0) {
+                        alert('Successfully Deleted')
+                        const remaining = reviews.filter(ord => ord._id !== id)
+                        setReviews(remaining)
+                    }
+                })
+
+        }
+    }
+
+    const authInfo = { user, createUser, signIn, providerLogin, logOut, updatUserProfile, loading, handleDelete, reviews }
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
