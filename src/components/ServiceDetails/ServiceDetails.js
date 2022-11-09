@@ -13,7 +13,7 @@ const ServiceDetails = () => {
     // console.log(reviews)
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/review?reviewId=${service?._id}`
+        fetch(`http://localhost:5000/review?reviewId=${service?._id}`,
         )
             .then(res => {
                 // if (res.status === 401 || res.status === 403) {
