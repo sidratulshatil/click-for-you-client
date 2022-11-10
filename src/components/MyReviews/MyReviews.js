@@ -15,26 +15,26 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([])
     // console.log(myReviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user.email}`, {
+        fetch(`https://click-for-you-server.vercel.app/review?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('click-token')}`
             }
         })
             .then(res => res.json())
             .then(data => setMyReviews(data))
-    }, [])
+    }, [myReviews])
 
 
     return (
         <div>
-            <h2 className='text-4xl font-bold text-red-600'>My reviews</h2>
+            <h2 className='text-4xl font-bold text-red-600 mb-3'>My reviews</h2>
             {
                 myReviews.length > 0 ?
                     <>
                         {
                             myReviews.map(myReview => <div className='my-review-div' key={myReview._id}>
-                                <h1 className='text-2xl font-semibold'>Service Name: {myReview.title}</h1>
-                                <h2> <span className='text-2xl font-semibold'>Review:</span> {myReview.comment}</h2>
+                                <h1 className='text-2xl font-bold'>Service Name: <span className='service-title'>{myReview.title}</span> </h1>
+                                <h2> <span className='text-2xl font-bold'>Review:</span> {myReview.comment}</h2>
                                 <button onClick={() => handleDelete(myReview._id)} className="btn btn-sm mt-2">Delete review</button>
                                 <Link to={`/editform/${myReview._id}`}><button className="btn btn-sm mt-2 ml-2">Edit review</button></Link>
                             </div>)

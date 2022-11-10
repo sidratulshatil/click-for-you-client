@@ -15,7 +15,7 @@ const ServiceDetails = () => {
     // console.log(reviews)
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`http://localhost:5000/review2?reviewId=${service?._id}`
+        fetch(`https://click-for-you-server.vercel.app/review2?reviewId=${service?._id}`
 
         )
             .then(res => {
@@ -25,7 +25,7 @@ const ServiceDetails = () => {
                 return res.json()
             })
             .then(data => setReviews(data))
-    }, [])
+    }, [reviews])
 
     const handlePlaceReview = (event) => {
         event.preventDefault();
@@ -45,7 +45,7 @@ const ServiceDetails = () => {
         }
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch('http://localhost:5000/review', {
+            fetch('https://click-for-you-server.vercel.app/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -66,7 +66,7 @@ const ServiceDetails = () => {
     const handleDelete = (id) => {
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://click-for-you-server.vercel.app/review/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())

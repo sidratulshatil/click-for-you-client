@@ -10,7 +10,7 @@ const EditForm = () => {
     console.log(user)
     const handleUpdate = (event) => {
         event.preventDefault()
-        fetch(`http://localhost:5000/review/${data._id}`, {
+        fetch(`https://click-for-you-server.vercel.app/review/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -36,9 +36,9 @@ const EditForm = () => {
     return (
 
         <div >
-            <h2>Review name: {data.title}</h2>
+            <h2 className='text-2xl font-bold'>Service name: <span className='service-title'>{data.title}</span></h2>
             <Form onSubmit={handleUpdate}>
-                <input className="border my-2 border-double p-4" onChange={handleInputChange} defaultValue={data.comment} type="text" name='comment' required /><br />
+                <input className="border my-2 border-double p-7" onChange={handleInputChange} defaultValue={data.comment} type="text" name='comment' required /><br />
                 <button type='submit' className="btn btn-sm">Edit Review</button>
 
             </Form>

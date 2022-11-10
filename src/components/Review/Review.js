@@ -15,7 +15,7 @@ const Review = ({ reviews, handleDelete }) => {
         <div className="">
             <h1></h1>
             {
-                reviews.map(review => <table className="table  review-div">
+                reviews.map(review => <table className="table  review-div" key={review._id}>
                     <thead>
                         <tr>
                             <th>

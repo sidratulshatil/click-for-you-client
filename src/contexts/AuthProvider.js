@@ -55,7 +55,7 @@ const AuthProvider = ({ children }) => {
     const handleDelete = (id) => {
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch(`http://localhost:5000/review/${id}`, {
+            fetch(`https://click-for-you-server.vercel.app/review/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
