@@ -8,6 +8,7 @@ import Footer from '../Footer/Footer';
 import useTitle from '../Hooks/useTitle';
 import { AuthContext } from '../../contexts/AuthProvider';
 import RecentWork from '../RecentWork/RecentWork';
+import About from '../About/About';
 
 const Home = () => {
     const services = useLoaderData()
@@ -61,6 +62,10 @@ const Home = () => {
             <div className='my-5 rounded-lg'>
                 <h1 className='text-3xl text-yellow-800 my-2 font-serif font-bold'>My RecentWorks</h1>
                 <RecentWork></RecentWork>
+            </div>
+            <div className='about-div'>
+                <h1 className='text-3xl text-yellow-800 my-2 font-serif font-bold'>About Me</h1>
+                <About></About>
             </div>
             <div className='mt-12 bottom-0'>
                 <Footer></Footer>
