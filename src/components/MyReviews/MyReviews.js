@@ -22,9 +22,7 @@ const MyReviews = () => {
             .then(data => setMyReviews(data))
     }, [myReviews])
 
-    const updateReview = (id, updatedReview) => {
-        setMyReviews(myReviews.map(rev => rev._id === id ? updatedReview : rev))
-    }
+
     return (
         <div>
             <h2 className='text-4xl font-bold text-red-600'>My reviews</h2>

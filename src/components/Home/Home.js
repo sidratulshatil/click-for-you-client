@@ -7,6 +7,7 @@ import 'react-photo-view/dist/react-photo-view.css';
 import Footer from '../Footer/Footer';
 import useTitle from '../Hooks/useTitle';
 import { AuthContext } from '../../contexts/AuthProvider';
+import RecentWork from '../RecentWork/RecentWork';
 
 const Home = () => {
     const services = useLoaderData()
@@ -56,6 +57,10 @@ const Home = () => {
             </div>
             <div>
                 <Link to='/services'><button className="btn btn-active btn-accent text-white font-bold">See All</button></Link>
+            </div>
+            <div className='my-5 rounded-lg'>
+                <h1 className='text-3xl text-yellow-800 my-2 font-serif font-bold'>My RecentWorks</h1>
+                <RecentWork></RecentWork>
             </div>
             <div className='mt-12 bottom-0'>
                 <Footer></Footer>
