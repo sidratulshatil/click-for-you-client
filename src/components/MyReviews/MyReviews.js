@@ -1,5 +1,6 @@
 import { comment } from 'postcss';
 import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../Hooks/useTitle';
 import './myReview.css'
@@ -10,18 +11,20 @@ const MyReviews = () => {
 
     useTitle('My Review')
     const [myReviews, setMyReviews] = useState([])
-
+    // console.log(myReviews)
     useEffect(() => {
-        fetch(`http://localhost:5000/review?email=${user.email}`, {
+        fetch(`https://click-for-you-server.vercel.app/review?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('click-token')}`
             }
         })
             .then(res => res.json())
             .then(data => setMyReviews(data))
-    }, [])
+    }, [myReviews])
 
-
+    const updateReview = (id, updatedReview) => {
+        setMyReviews(myReviews.map(rev => rev._id === id ? updatedReview : rev))
+    }
     return (
         <div>
             <h2 className='text-4xl font-bold text-red-600'>My reviews</h2>
@@ -33,7 +36,7 @@ const MyReviews = () => {
                                 <h1 className='text-2xl font-semibold'>Service Name: {myReview.title}</h1>
                                 <h2> <span className='text-2xl font-semibold'>Review:</span> {myReview.comment}</h2>
                                 <button onClick={() => handleDelete(myReview._id)} className="btn btn-sm mt-2">Delete review</button>
-                                <button className="btn btn-sm mt-2 ml-2">Edit review</button>
+                                <Link to={`/editform/${myReview._id}`}><button className="btn btn-sm mt-2 ml-2">Edit review</button></Link>
                             </div>)
                         }
                     </>

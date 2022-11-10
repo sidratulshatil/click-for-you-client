@@ -20,7 +20,7 @@ const AddService = () => {
             price: price
         }
 
-        fetch('http://localhost:5000/services', {
+        fetch('https://click-for-you-server.vercel.app/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
