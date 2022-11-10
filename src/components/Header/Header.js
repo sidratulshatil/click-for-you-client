@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
+import './Header.css'
 
 const Header = () => {
     const { user, logOut } = useContext(AuthContext)
@@ -12,7 +13,7 @@ const Header = () => {
     }
     return (
         <div>
-            <div className="navbar bg-green-100">
+            <div className="navbar header-div">
                 <div className="flex-1">
                     <button className="btn btn-ghost normal-case text-xl">Click For You</button>
                 </div>

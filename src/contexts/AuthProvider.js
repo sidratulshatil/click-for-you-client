@@ -3,7 +3,9 @@ import React, { createContext, useEffect, useState } from 'react';
 import app from '../firebase/firebase.config';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { GoogleAuthProvider } from "firebase/auth";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+const notify = () => toast("Review Deleted Succesfully!!", { position: 'top-center' })
 
 export const AuthContext = createContext()
 const auth = getAuth(app)
@@ -53,14 +55,14 @@ const AuthProvider = ({ children }) => {
     const handleDelete = (id) => {
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch(`https://click-for-you-server.vercel.app/review/${id}`, {
+            fetch(`http://localhost:5000/review/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
                     if (data.deletedCount > 0) {
-                        alert('Successfully Deleted')
+                        notify()
                         const remaining = reviews.filter(ord => ord._id !== id)
                         setReviews(remaining)
                     }

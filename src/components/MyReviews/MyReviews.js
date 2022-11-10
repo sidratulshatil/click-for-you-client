@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../Hooks/useTitle';
 import './myReview.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyReviews = () => {
     const { user, handleDelete } = useContext(AuthContext)
@@ -13,14 +15,14 @@ const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([])
     // console.log(myReviews)
     useEffect(() => {
-        fetch(`https://click-for-you-server.vercel.app/review?email=${user.email}`, {
+        fetch(`http://localhost:5000/review?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('click-token')}`
             }
         })
             .then(res => res.json())
             .then(data => setMyReviews(data))
-    }, [myReviews])
+    }, [])
 
 
     return (
@@ -43,6 +45,7 @@ const MyReviews = () => {
                         <p className='text-green-700 font-semibold text-3xl mt-4 mb-4'>No reviews were added</p>
                     </>
             }
+            <ToastContainer />
         </div>
     );
 };

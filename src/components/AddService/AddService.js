@@ -1,9 +1,12 @@
 import React from 'react';
 import { Form } from 'react-router-dom';
 import useTitle from '../Hooks/useTitle';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AddService = () => {
     useTitle('Add Service')
+    const notify = () => toast("Service added Succesfully!!", { position: 'top-center' })
     const handlePlaceOrder = event => {
         event.preventDefault();
         const form = event.target;
@@ -20,7 +23,7 @@ const AddService = () => {
             price: price
         }
 
-        fetch('https://click-for-you-server.vercel.app/services', {
+        fetch('http://localhost:5000/services', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -31,7 +34,7 @@ const AddService = () => {
             .then(data => {
                 console.log(data)
                 if (data.acknowledged) {
-                    alert('Service added successfully')
+                    notify()
                     console.log('done')
                     form.reset();
 
@@ -52,6 +55,7 @@ const AddService = () => {
                 <input type="text" name='price' placeholder="Type service price" className="input input-bordered input-success w-full max-w-xs my-3" /><br />
                 <button type='submit' className="btn btn-success">Add Service</button>
             </form>
+            <ToastContainer />
         </div>
     );
 };

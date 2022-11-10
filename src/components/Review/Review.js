@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Form, Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import './review.css'
+
+
 const Review = ({ reviews, handleDelete }) => {
     const { user } = useContext(AuthContext)
 
@@ -56,6 +58,7 @@ const Review = ({ reviews, handleDelete }) => {
 
                 </table>)
             }
+
         </div>
     );
 };

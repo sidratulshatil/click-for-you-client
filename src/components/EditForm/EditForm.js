@@ -1,7 +1,8 @@
 import { useState } from "react"
 import { Form } from "react-bootstrap"
 import { useLoaderData } from "react-router-dom"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EditForm = () => {
     const data = useLoaderData()
@@ -9,7 +10,7 @@ const EditForm = () => {
     console.log(user)
     const handleUpdate = (event) => {
         event.preventDefault()
-        fetch(`https://click-for-you-server.vercel.app/review/${data._id}`, {
+        fetch(`http://localhost:5000/review/${data._id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -25,13 +26,13 @@ const EditForm = () => {
             })
     }
     const handleInputChange = event => {
-        const field = event.target.comment;
+        const field = event.target.name;
         const value = event.target.value;
         const newUser = { ...user }
         newUser[field] = value;
-        console.log(newUser)
         setUser(newUser);
     }
+    // const notify = () => toast("Wow so easy!");
     return (
 
         <div >
@@ -41,6 +42,7 @@ const EditForm = () => {
                 <button type='submit' className="btn btn-sm">Edit Review</button>
 
             </Form>
+
         </div>
 
     )

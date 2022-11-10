@@ -4,6 +4,8 @@ import { Form, Link, useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import useTitle from '../Hooks/useTitle';
 import Review from '../Review/Review';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ServiceDetails = () => {
     const service = useLoaderData()
@@ -13,7 +15,7 @@ const ServiceDetails = () => {
     // console.log(reviews)
     const { user } = useContext(AuthContext)
     useEffect(() => {
-        fetch(`https://click-for-you-server.vercel.app/review?reviewId=${service?._id}`
+        fetch(`http://localhost:5000/review2?reviewId=${service?._id}`
 
         )
             .then(res => {
@@ -23,7 +25,7 @@ const ServiceDetails = () => {
                 return res.json()
             })
             .then(data => setReviews(data))
-    }, [reviews])
+    }, [])
 
     const handlePlaceReview = (event) => {
         event.preventDefault();
@@ -43,7 +45,7 @@ const ServiceDetails = () => {
         }
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch('https://click-for-you-server.vercel.app/review', {
+            fetch('http://localhost:5000/review', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
@@ -60,17 +62,18 @@ const ServiceDetails = () => {
                 .catch(er => console.error(er));
         }
     }
+    const notify = () => toast("Succefully Deleted!!")
     const handleDelete = (id) => {
         const procced = window.confirm('Are you sure??')
         if (procced) {
-            fetch(`https://click-for-you-server.vercel.app/review/${id}`, {
+            fetch(`http://localhost:5000/review/${id}`, {
                 method: 'DELETE'
             })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data)
                     if (data.deletedCount > 0) {
-                        alert('Successfully Deleted')
+                        notify()
                         const remaining = reviews.filter(ord => ord._id !== id)
                         setReviews(remaining)
                     }
@@ -117,6 +120,7 @@ const ServiceDetails = () => {
                         <p className='text-green-700 font-semibold text-3xl mt-4 mb-4'>No reviews were added</p>
                 }
             </div>
+
         </div>
     );
 };

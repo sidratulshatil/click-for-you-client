@@ -1,0 +1,8 @@
+.header-div {
+    background-color: hsl(213deg 39% 20%);
+}
+
+.header-div button {
+    color: hsl(0deg 0% 100%);
+    font-weight: 700;
+}
